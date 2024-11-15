@@ -4,6 +4,7 @@ import { CContainer, CSpinner } from '@coreui/react';
 
 // routes config
 import routes from '../routes';
+import PrivateRoute from './PrivateRoute';
 
 const AppContent = () => {
     return (
@@ -11,6 +12,8 @@ const AppContent = () => {
             <Suspense fallback={<CSpinner color="primary" />}>
                 <Routes>
                     {routes.map((route, idx) => {
+                        const Page = route.element;
+
                         return (
                             route.element && (
                                 <Route
@@ -18,7 +21,7 @@ const AppContent = () => {
                                     path={route.path}
                                     exact={route.exact}
                                     name={route.name}
-                                    element={<route.element />}
+                                    element={<PrivateRoute component={Page} />}
                                 />
                             )
                         );

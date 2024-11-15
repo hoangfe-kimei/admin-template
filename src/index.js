@@ -4,9 +4,12 @@ import { Provider } from 'react-redux';
 import 'core-js';
 import App from './App';
 import store from './store';
+import SessionContextProvider from './contexts/SessionContext';
 
 createRoot(document.getElementById('root')).render(
     <Provider store={store}>
-        <App />
+        <SessionContextProvider>
+            <App />
+        </SessionContextProvider>
     </Provider>,
 );
