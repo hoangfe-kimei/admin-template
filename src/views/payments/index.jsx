@@ -15,9 +15,29 @@ import {
     CTableHeaderCell,
     CTableRow,
 } from '@coreui/react';
+import { useToaster } from '../../contexts/ToasterContext';
 
 const Payment = () => {
     const [data, setData] = useState();
+    const { addToast } = useToaster();
+
+    const handleShowSuccessToast = () => {
+        addToast({
+            header: 'Success',
+            body: 'Your action was successful!',
+            color: 'success',
+            time: 'Just now',
+        });
+    };
+
+    const handleShowErrorToast = () => {
+        addToast({
+            header: 'Error',
+            body: 'Something went wrong!',
+            color: 'danger',
+            time: '1 min ago',
+        });
+    };
     const fakeData = [
         {
             id: 1,
@@ -129,10 +149,17 @@ const Payment = () => {
                     <p>Woohoo, you are reading this text in a modal!</p>
                 </CModalBody>
                 <CModalFooter>
-                    <CButton color="secondary" onClick={() => setVisible(false)}>
+                    <CButton
+                        color="secondary"
+                        onClick={() => {
+                            handleShowErrorToast();
+                        }}
+                    >
                         Close
                     </CButton>
-                    <CButton color="primary">Save changes</CButton>
+                    <CButton color="primary" onClick={handleShowSuccessToast}>
+                        Save changes
+                    </CButton>
                 </CModalFooter>
             </CModal>
         </CTable>
