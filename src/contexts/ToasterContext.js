@@ -9,7 +9,7 @@ export const ToasterProvider = ({ children }) => {
 
     const addToast = (options) => {
         const newToast = (
-            <CToast key={Date.now()} color={options.color || 'primary'}>
+            <CToast key={Date.now()} color={options.color}>
                 <CToastHeader closeButton>
                     <svg
                         className="rounded me-2"

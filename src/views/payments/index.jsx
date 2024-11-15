@@ -25,7 +25,6 @@ const Payment = () => {
         addToast({
             header: 'Success',
             body: 'Your action was successful!',
-            color: 'success',
             time: 'Just now',
         });
     };
@@ -34,7 +33,6 @@ const Payment = () => {
         addToast({
             header: 'Error',
             body: 'Something went wrong!',
-            color: 'danger',
             time: '1 min ago',
         });
     };
