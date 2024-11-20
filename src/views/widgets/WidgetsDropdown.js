@@ -42,7 +42,7 @@ const WidgetsDropdown = (props) => {
                             </span>
                         </>
                     }
-                    title="Users"
+                    title="Người dùng (50K)"
                     action={
                         <CDropdown alignment="end">
                             <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
@@ -132,7 +132,7 @@ const WidgetsDropdown = (props) => {
                             </span>
                         </>
                     }
-                    title="Income"
+                    title="Tổng tiền (1000$)"
                     action={
                         <CDropdown alignment="end">
                             <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
@@ -215,13 +215,13 @@ const WidgetsDropdown = (props) => {
                     color="warning"
                     value={
                         <>
-                            2.49%{' '}
+                            300{' '}
                             <span className="fs-6 fw-normal">
                                 (84.7% <CIcon icon={cilArrowTop} />)
                             </span>
                         </>
                     }
-                    title="Conversion Rate"
+                    title="Bảng tin (5K)"
                     action={
                         <CDropdown alignment="end">
                             <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
@@ -287,13 +287,13 @@ const WidgetsDropdown = (props) => {
                     color="danger"
                     value={
                         <>
-                            44K{' '}
+                            100{' '}
                             <span className="fs-6 fw-normal">
                                 (-23.6% <CIcon icon={cilArrowBottom} />)
                             </span>
                         </>
                     }
-                    title="Sessions"
+                    title="Bài viết (3K)"
                     action={
                         <CDropdown alignment="end">
                             <CDropdownToggle color="transparent" caret={false} className="text-white p-0">
