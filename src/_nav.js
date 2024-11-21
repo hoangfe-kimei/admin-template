@@ -183,8 +183,8 @@ const _nav = [
     },
     {
         component: CNavItem,
-        name: 'Widgets',
-        to: '/widgets',
+        name: 'Questions',
+        to: '/questions',
         icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
         badge: {
             color: 'info',
