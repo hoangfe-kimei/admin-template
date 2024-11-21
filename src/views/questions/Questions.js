@@ -20,6 +20,7 @@ import {
     CTableHeaderCell,
     CTableRow,
 } from '@coreui/react';
+import { Link } from 'react-router-dom';
 
 const Questions = () => {
     const [data, setData] = useState(null);
@@ -62,9 +63,11 @@ const Questions = () => {
                                 <CTableDataCell>
                                     <CRow style={{ width: 'max-content' }} xs={{ gutter: 1 }}>
                                         <CCol style={{ width: 'max-content' }}>
-                                            <CButton style={{ width: 'max-content' }} color="primary">
-                                                Chỉnh sửa
-                                            </CButton>
+                                            <Link to={`/questions/${item}`}>
+                                                <CButton style={{ width: 'max-content' }} color="primary">
+                                                    Chỉnh sửa
+                                                </CButton>
+                                            </Link>
                                         </CCol>
                                         <CCol>
                                             <CButton
