@@ -30,10 +30,9 @@ const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
 const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
 
 // Notifications
-const Alerts = React.lazy(() => import('./views/notifications/alerts/Alerts'));
-const Badges = React.lazy(() => import('./views/notifications/badges/Badges'));
-const Modals = React.lazy(() => import('./views/notifications/modals/Modals'));
-const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'));
+const University = React.lazy(() => import('./views/university'));
+const EditUniversity = React.lazy(() => import('./views/university/edit'));
+const CreateUniversity = React.lazy(() => import('./views/university/create'));
 
 const Questions = React.lazy(() => import('./views/questions/Questions'));
 const EditQuestion = React.lazy(() => import('./views/questions/edit'));
@@ -65,11 +64,13 @@ const routes = [
     { path: '/icons/coreui-icons', name: 'CoreUI Icons', element: CoreUIIcons },
     { path: '/icons/flags', name: 'Flags', element: Flags },
     { path: '/icons/brands', name: 'Brands', element: Brands },
-    { path: '/notifications', name: 'Notifications', element: Alerts, exact: true },
-    { path: '/notifications/alerts', name: 'Alerts', element: Alerts },
-    { path: '/notifications/badges', name: 'Badges', element: Badges },
-    { path: '/notifications/modals', name: 'Modals', element: Modals },
-    { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
+
+    // university
+    { path: '/university', name: 'University', element: University, exact: true },
+    { path: '/university/create', name: 'University', element: CreateUniversity, exact: true },
+    { path: '/university/:id', name: 'EditUniversity', element: EditUniversity, exact: true },
+
+    // questions
     { path: '/questions', name: 'Questions', element: Questions },
     { path: '/questions/:id', name: 'EditQuestion', element: EditQuestion },
 ];

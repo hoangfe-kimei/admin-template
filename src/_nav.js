@@ -10,6 +10,7 @@ import {
     cilNotes,
     cilPencil,
     cilPuzzle,
+    cilSchool,
     cilSpeedometer,
     cilStar,
 } from '@coreui/icons';
@@ -155,31 +156,10 @@ const _nav = [
         ],
     },
     {
-        component: CNavGroup,
-        name: 'Notifications',
-        icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
-        items: [
-            {
-                component: CNavItem,
-                name: 'Alerts',
-                to: '/notifications/alerts',
-            },
-            {
-                component: CNavItem,
-                name: 'Badges',
-                to: '/notifications/badges',
-            },
-            {
-                component: CNavItem,
-                name: 'Modal',
-                to: '/notifications/modals',
-            },
-            {
-                component: CNavItem,
-                name: 'Toasts',
-                to: '/notifications/toasts',
-            },
-        ],
+        component: CNavItem,
+        name: 'University',
+        to: '/university',
+        icon: <CIcon icon={cilSchool} customClassName="nav-icon" />,
     },
     {
         component: CNavItem,

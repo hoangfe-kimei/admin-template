@@ -32,7 +32,7 @@ const EditQuestion = () => {
 
     return (
         <CCard className="mb-4">
-            <CCardHeader>EDIT Questions</CCardHeader>
+            <CCardHeader>EDIT Question</CCardHeader>
             <CCardBody style={{ display: 'flex' }}>
                 <CForm className="col g-3 needs-validation" noValidate validated={validated} onSubmit={handleSubmit}>
                     <CCol md={8} className="position-relative">
