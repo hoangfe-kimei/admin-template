@@ -26,6 +26,7 @@ const Payment = () => {
 
     const { loading, runAsync: handleGetListPayments } = useRequest(paymentService.getListPayments, {
         manual: true,
+        pollingInterval: 5000,
         onSuccess: (res) => {
             if (res.data.message === 'success') {
                 setPayments(res.data.data);
@@ -53,6 +54,7 @@ const Payment = () => {
             try {
                 await handleAcceptPayment({
                     id: data.id,
+                    status: data.status ? 'done' : 'cancel',
                 });
             } catch (err) {
                 console.error(err);
@@ -113,15 +115,38 @@ const Payment = () => {
                                             Đã hoàn thành
                                         </CButton>
                                     </CCol>
+                                ) : item.status === 'cancel' ? (
+                                    <CCol>
+                                        <CButton disabled color="danger" style={{ color: '#FFF' }}>
+                                            Đã hủy
+                                        </CButton>
+                                    </CCol>
                                 ) : (
                                     <>
                                         <CCol>
-                                            <CButton onClick={() => setData(item)} color="primary">
+                                            <CButton
+                                                onClick={() =>
+                                                    setData({
+                                                        ...item,
+                                                        status: true,
+                                                    })
+                                                }
+                                                color="primary"
+                                            >
                                                 Xác nhận
                                             </CButton>
                                         </CCol>
                                         <CCol>
-                                            <CButton color="danger" style={{ color: '#FFF' }}>
+                                            <CButton
+                                                onClick={() =>
+                                                    setData({
+                                                        ...item,
+                                                        status: false,
+                                                    })
+                                                }
+                                                color="danger"
+                                                style={{ color: '#FFF' }}
+                                            >
                                                 Hủy bỏ
                                             </CButton>
                                         </CCol>
@@ -134,10 +159,16 @@ const Payment = () => {
             </CTableBody>
             <CModal visible={!!data} onClose={() => setData(null)} aria-labelledby="LiveDemoExampleLabel">
                 <CModalHeader>
-                    <CModalTitle id="LiveDemoExampleLabel">Xác nhận đã thanh toán</CModalTitle>
+                    <CModalTitle id="LiveDemoExampleLabel">
+                        Xác nhận {data?.status ? 'đã thanh toán' : 'hủy thanh toán'}
+                    </CModalTitle>
                 </CModalHeader>
                 <CModalBody>
-                    <p>Bạn có chắc chắn rằng đã nhận được tiền hóa đơn này không?</p>
+                    <p>
+                        {data?.status
+                            ? 'Bạn có chắc chắn rằng đã nhận được tiền hóa đơn này không?'
+                            : 'Bạn có chắc chắn muốn hủy bỏ thanh toán này không?'}
+                    </p>
                 </CModalBody>
                 <CModalFooter>
                     <CButton
