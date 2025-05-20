@@ -1,4 +1,7 @@
 import React from 'react';
+import Exam from './views/exams';
+import CreateExam from './views/exams/create';
+import EditExam from './views/exams/edit';
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'));
@@ -69,6 +72,11 @@ const routes = [
     { path: '/university', name: 'University', element: University, exact: true },
     { path: '/university/create', name: 'University', element: CreateUniversity, exact: true },
     { path: '/university/:id', name: 'EditUniversity', element: EditUniversity, exact: true },
+
+    // university
+    { path: '/exams', name: 'Exam', element: Exam, exact: true },
+    { path: '/exams/create', name: 'Exam Create', element: CreateExam, exact: true },
+    { path: '/exams/:id', name: 'Exam Edit', element: EditExam, exact: true },
 
     // questions
     { path: '/questions', name: 'Questions', element: Questions },

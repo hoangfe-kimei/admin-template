@@ -22,24 +22,24 @@ import {
 import { useRequest } from 'ahooks';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import schoolService from '../../services/schoolService';
+import examService from '../../services/examService';
 
-const University = () => {
+const Exam = () => {
     const [data, setData] = useState(null);
 
     const {
-        data: schools,
+        data: exams,
         loading,
-        runAsync: getSchools,
-    } = useRequest(schoolService.getSchools, {
+        runAsync: getExams,
+    } = useRequest(examService.getExams, {
         manual: true,
     });
 
-    console.log(schools);
+    console.log(exams);
 
     useEffect(() => {
         try {
-            getSchools();
+            getExams();
         } catch (err) {
             console.error(err);
         }
@@ -47,12 +47,12 @@ const University = () => {
 
     return (
         <CCard className="mb-4">
-            <CCardHeader>University</CCardHeader>
+            <CCardHeader>Exams</CCardHeader>
             <CCardBody>
                 <CHeaderBrand style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 0' }}>
                     <div></div>
-                    <h3>Danh sách các trường</h3>
-                    <Link to="/university/create">
+                    <h3>Danh sách đề thi</h3>
+                    <Link to="/exams/create">
                         <CButton color="primary">Thêm mới</CButton>
                     </Link>
                 </CHeaderBrand>
@@ -60,25 +60,33 @@ const University = () => {
                     <CTableHead>
                         <CTableRow>
                             <CTableHeaderCell scope="col">#</CTableHeaderCell>
-                            <CTableHeaderCell scope="col">University ID</CTableHeaderCell>
-                            <CTableHeaderCell scope="col">University Name</CTableHeaderCell>
-                            <CTableHeaderCell scope="col">University Code</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Exam Title</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Exam Description</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Exam Subject</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Exam Type</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Exam Class</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Exam Year</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Exam Time</CTableHeaderCell>
                             <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
                         </CTableRow>
                     </CTableHead>
                     <CTableBody>
                         {!loading ? (
-                            schools?.data?.data?.length > 0 ? (
-                                schools.data.data.map((item, index) => (
+                            exams?.data?.data?.length > 0 ? (
+                                exams.data.data.map((item, index) => (
                                     <CTableRow key={item.id}>
                                         <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
-                                        <CTableDataCell>{item.id}</CTableDataCell>
-                                        <CTableDataCell>{item.name}</CTableDataCell>
-                                        <CTableDataCell>{item.code}</CTableDataCell>
+                                        <CTableDataCell>{item.title}</CTableDataCell>
+                                        <CTableDataCell>{item.description}</CTableDataCell>
+                                        <CTableDataCell>{item.subject_type}</CTableDataCell>
+                                        <CTableDataCell>{item.form_type}</CTableDataCell>
+                                        <CTableDataCell>{item.class}</CTableDataCell>
+                                        <CTableDataCell>{item.year}</CTableDataCell>
+                                        <CTableDataCell>{item.time_done}</CTableDataCell>
                                         <CTableDataCell>
                                             <CRow style={{ width: 'max-content' }} xs={{ gutter: 1 }}>
                                                 <CCol style={{ width: 'max-content' }}>
-                                                    <Link to={`/university/${item}`}>
+                                                    <Link to={`/exams/${item}`}>
                                                         <CButton style={{ width: 'max-content' }} color="primary">
                                                             Chỉnh sửa
                                                         </CButton>
@@ -98,7 +106,7 @@ const University = () => {
                                     </CTableRow>
                                 ))
                             ) : (
-                                <h3>Chưa có trường nào trong danh sách</h3>
+                                <h3>Chưa có đề thi nào trong danh sách</h3>
                             )
                         ) : (
                             <div
@@ -138,4 +146,4 @@ const University = () => {
     );
 };
 
-export default University;
+export default Exam;
